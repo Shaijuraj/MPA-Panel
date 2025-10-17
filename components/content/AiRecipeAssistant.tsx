@@ -1,23 +1,19 @@
 import React, { useState } from 'react';
 import Card from '../ui/Card';
-// Fix: Import GoogleGenAI
 import { GoogleGenAI } from "@google/genai";
 
 const AiRecipeAssistant: React.FC = () => {
   const [ingredients, setIngredients] = useState<string>('chicken breast, rice, broccoli, soy sauce');
   const [generatedRecipe, setGeneratedRecipe] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  // Fix: Add error state
   const [error, setError] = useState<string>('');
 
   const handleGenerateRecipe = async () => {
-    // Fix: Clear previous error
     setError('');
     setIsLoading(true);
     setGeneratedRecipe('');
 
     try {
-      // Fix: Implement Gemini API call
       // The API key must be obtained exclusively from the environment variable `process.env.API_KEY`.
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY! });
       const response = await ai.models.generateContent({
@@ -28,7 +24,6 @@ const AiRecipeAssistant: React.FC = () => {
       setGeneratedRecipe(recipeText);
     } catch (e) {
       console.error(e);
-      // Fix: Handle API errors gracefully
       setError('Failed to generate recipe. Please check your API key and try again.');
     } finally {
       setIsLoading(false);
@@ -50,7 +45,7 @@ const AiRecipeAssistant: React.FC = () => {
             className="mt-1 block w-full rounded-md bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
             placeholder="e.g., ground beef, onions, tomatoes, pasta"
           />
-          <p className="mt-2 text-sm text-gray-500">Separate ingredients with commas.</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Separate ingredients with commas.</p>
         </div>
         <button
           onClick={handleGenerateRecipe}
@@ -59,7 +54,6 @@ const AiRecipeAssistant: React.FC = () => {
         >
           {isLoading ? 'Generating...' : 'Generate Recipe'}
         </button>
-        {/* Fix: Display error message */}
         {error && <p className="mt-4 text-sm text-center text-red-500">{error}</p>}
       </Card>
       <Card title="Generated Recipe">
@@ -74,7 +68,7 @@ const AiRecipeAssistant: React.FC = () => {
           </div>
         )}
         {!isLoading && !generatedRecipe && (
-          <p className="text-gray-500 text-center">Your generated recipe will appear here.</p>
+          <p className="text-gray-600 dark:text-gray-400 text-center">Your generated recipe will appear here.</p>
         )}
       </Card>
     </div>

@@ -15,6 +15,9 @@ function App() {
     const savedTheme = localStorage.getItem('theme') as Theme | null;
     return savedTheme || 'system';
   });
+  
+  const [currency, setCurrency] = useState('USD');
+  const [language, setLanguage] = useState('en-US');
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -54,7 +57,7 @@ function App() {
   };
 
   if (!isAuthenticated) {
-    return <AuthPage onLoginSuccess={handleLogin} />;
+    return <AuthPage onLoginSuccess={handleLogin} language={language} />;
   }
 
   return (
@@ -64,13 +67,18 @@ function App() {
         activeItem={activeItem} 
         setActiveItem={setActiveItem}
         onLogout={handleLogout}
+        language={language}
+        theme={theme}
+        setTheme={setTheme}
       />
       <div className={`flex flex-col flex-1 transition-all duration-300 ease-in-out ${isSidebarOpen ? 'ml-64' : 'ml-20'}`}>
-        <Header onSidebarToggle={toggleSidebar} />
+        <Header onSidebarToggle={toggleSidebar} language={language} />
         <MainContent 
           activeItem={activeItem} 
-          theme={theme}
-          setTheme={setTheme}
+          currency={currency}
+          setCurrency={setCurrency}
+          language={language}
+          setLanguage={setLanguage}
         />
       </div>
     </div>

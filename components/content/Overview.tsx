@@ -15,7 +15,7 @@ const StatCard: React.FC<{
         <Icon className="h-6 w-6 text-white" />
       </div>
       <div>
-        <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">{title}</h4>
+        <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">{title}</h4>
         <p className="text-2xl font-bold text-gray-800 dark:text-gray-200">{value}</p>
       </div>
     </Card>
@@ -66,7 +66,7 @@ const Overview: React.FC = () => {
       </div>
       <div className="mt-8">
         <Card title="Welcome, Admin!">
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-gray-700 dark:text-gray-300">
                 Here's a snapshot of your application's performance. You can dive deeper into specific areas using the navigation on the left.
                 The 'App/Site Health Report' and 'User Retention Chart' provide more detailed analytics.
             </p>

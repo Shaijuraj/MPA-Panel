@@ -46,19 +46,19 @@ const HealthReport: React.FC = () => {
       <h1 className="text-3xl font-bold mb-6">App/Site Health Report</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
         <Card>
-            <h4 className="text-sm font-medium text-gray-500">API Uptime</h4>
+            <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">API Uptime</h4>
             <p className="text-3xl font-bold text-green-500">99.98%</p>
         </Card>
         <Card>
-            <h4 className="text-sm font-medium text-gray-500">Avg. Response Time</h4>
+            <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">Avg. Response Time</h4>
             <p className="text-3xl font-bold text-blue-500">120ms</p>
         </Card>
         <Card>
-            <h4 className="text-sm font-medium text-gray-500">Error Rate</h4>
+            <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">Error Rate</h4>
             <p className="text-3xl font-bold text-yellow-500">0.12%</p>
         </Card>
         <Card>
-            <h4 className="text-sm font-medium text-gray-500">Active Users</h4>
+            <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">Active Users</h4>
             <p className="text-3xl font-bold">1,245</p>
         </Card>
       </div>

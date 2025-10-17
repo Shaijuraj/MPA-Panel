@@ -1,11 +1,13 @@
 import React from 'react';
 import { SearchIcon, BellIcon, MenuIcon } from '../icons';
+import { t } from '../../utils/i18n';
 
 interface HeaderProps {
   onSidebarToggle: () => void;
+  language: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
+const Header: React.FC<HeaderProps> = ({ onSidebarToggle, language }) => {
   return (
     <header className="flex items-center justify-between h-20 px-6 bg-white dark:bg-dark-sidebar border-b border-gray-200 dark:border-gray-700 flex-shrink-0">
       <div className="flex items-center">
@@ -19,7 +21,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
           <input
             type="text"
             className="w-full pl-10 pr-4 py-2 border rounded-full bg-gray-100 dark:bg-gray-800 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
-            placeholder="Search..."
+            placeholder={`${t(language, 'search')}...`}
           />
         </div>
       </div>
@@ -36,7 +38,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
           />
           <div className="ml-2 hidden sm:block">
             <p className="text-sm font-semibold">Admin User</p>
-            <p className="text-xs text-gray-500">admin@mealpro.com</p>
+            <p className="text-xs text-gray-700 dark:text-gray-300">admin@mealpro.com</p>
           </div>
         </div>
       </div>

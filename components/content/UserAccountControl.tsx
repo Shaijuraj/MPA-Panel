@@ -13,16 +13,16 @@ const users = [
 const UserAccountControl: React.FC = () => {
   return (
     <Card title="Account Control">
-        <p className="text-gray-500 mb-4">Perform administrative actions on user accounts.</p>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">Perform administrative actions on user accounts.</p>
         <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
             <thead className="bg-gray-50 dark:bg-gray-800">
                 <tr>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Login</th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">User</th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Role</th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Last Login</th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Actions</th>
                 </tr>
             </thead>
             <tbody className="bg-white dark:bg-dark-sidebar divide-y divide-gray-200 dark:divide-gray-700">
@@ -30,19 +30,19 @@ const UserAccountControl: React.FC = () => {
                 <tr key={user.id}>
                     <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm font-medium">{user.name}</div>
-                        <div className="text-sm text-gray-500">{user.email}</div>
+                        <div className="text-sm text-gray-700 dark:text-gray-300">{user.email}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                        user.status === 'Active' ? 'bg-green-100 text-green-800' :
-                        user.status === 'Suspended' ? 'bg-yellow-100 text-yellow-800' :
-                        'bg-red-100 text-red-800'
+                        user.status === 'Active' ? 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300' :
+                        user.status === 'Suspended' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300' :
+                        'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300'
                     }`}>
                         {user.status}
                     </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{user.role}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{user.lastLogin}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{user.role}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{user.lastLogin}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                         <button className="text-yellow-600 hover:text-yellow-900">Suspend</button>
                         <button className="text-red-600 hover:text-red-900">Ban</button>

@@ -44,7 +44,7 @@ const UserProfileView: React.FC = () => {
                 <img src={user.avatar} alt={user.name} className="w-24 h-24 rounded-full object-cover" />
                 <div>
                     <h1 className="text-3xl font-bold">{user.name}</h1>
-                    <p className="text-gray-500 dark:text-gray-400">{user.email}</p>
+                    <p className="text-gray-700 dark:text-gray-300">{user.email}</p>
                 </div>
             </div>
 
@@ -63,7 +63,7 @@ const UserProfileView: React.FC = () => {
                             <PlanIcon plan={user.subscription.plan} />
                             <div>
                                 <p className="font-semibold">{user.subscription.plan}</p>
-                                <p className="text-sm text-gray-500">{user.subscription.status} - Renews on {user.subscription.nextBilling}</p>
+                                <p className="text-sm text-gray-700 dark:text-gray-300">{user.subscription.status} - Renews on {user.subscription.nextBilling}</p>
                             </div>
                         </div>
                     </Card>
@@ -76,7 +76,7 @@ const UserProfileView: React.FC = () => {
                             {user.recentActivity.map(activity => (
                                 <li key={activity.id} className="py-3 flex justify-between items-center">
                                     <p className="text-sm">{activity.action}</p>
-                                    <p className="text-sm text-gray-500">{activity.timestamp}</p>
+                                    <p className="text-sm text-gray-700 dark:text-gray-300">{activity.timestamp}</p>
                                 </li>
                             ))}
                         </ul>

@@ -13,7 +13,7 @@ const SecuritySettings: React.FC = () => {
                     <div className="flex items-center justify-between">
                         <div>
                             <h4 className="font-semibold">Enable 2FA</h4>
-                            <p className="text-sm text-gray-500">Add an extra layer of security to your account.</p>
+                            <p className="text-sm text-gray-700 dark:text-gray-300">Add an extra layer of security to your account.</p>
                         </div>
                         <label htmlFor="two-factor-toggle" className="flex items-center cursor-pointer">
                             <div className="relative">
@@ -60,19 +60,19 @@ const SecuritySettings: React.FC = () => {
                  </Card>
 
                  <Card title="Active Sessions">
-                    <p className="text-gray-500 mb-4">This is a list of devices that have logged into your account.</p>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">This is a list of devices that have logged into your account.</p>
                     <div className="space-y-3">
                         <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-md">
                             <div>
                                 <p className="font-semibold">Chrome on macOS</p>
-                                <p className="text-xs text-gray-400">Current session - San Francisco, US</p>
+                                <p className="text-xs text-gray-600 dark:text-gray-400">Current session - San Francisco, US</p>
                             </div>
                             <button className="text-sm text-primary">Details</button>
                         </div>
                         <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-md">
                             <div>
                                 <p className="font-semibold">MealPro App on iOS</p>
-                                <p className="text-xs text-gray-400">2 days ago - New York, US</p>
+                                <p className="text-xs text-gray-600 dark:text-gray-400">2 days ago - New York, US</p>
                             </div>
                             <button className="text-sm text-red-500 hover:text-red-700">Log out</button>
                         </div>

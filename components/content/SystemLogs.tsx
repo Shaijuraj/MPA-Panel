@@ -11,10 +11,10 @@ const logs = [
 ];
 
 const levelColors: { [key: string]: string } = {
-    INFO: 'bg-blue-100 text-blue-800',
-    WARN: 'bg-yellow-100 text-yellow-800',
-    ERROR: 'bg-red-100 text-red-800',
-    DEBUG: 'bg-gray-100 text-gray-800',
+    INFO: 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300',
+    WARN: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300',
+    ERROR: 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300',
+    DEBUG: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
 };
 
 const SystemLogs: React.FC = () => {
@@ -24,9 +24,9 @@ const SystemLogs: React.FC = () => {
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                     <thead className="bg-gray-50 dark:bg-gray-800">
                         <tr>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Level</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Timestamp</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Level</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Message</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Timestamp</th>
                         </tr>
                     </thead>
                     <tbody className="bg-white dark:bg-dark-sidebar divide-y divide-gray-200 dark:divide-gray-700">
@@ -38,7 +38,7 @@ const SystemLogs: React.FC = () => {
                                     </span>
                                 </td>
                                 <td className="px-6 py-4 whitespace-normal text-sm font-mono">{log.message}</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{log.timestamp}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{log.timestamp}</td>
                             </tr>
                         ))}
                     </tbody>

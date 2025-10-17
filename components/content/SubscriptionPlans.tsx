@@ -1,40 +1,47 @@
 import React from 'react';
 import Card from '../ui/Card';
 import { CheckCircleIcon } from '../icons';
+import { formatCurrency } from '../../utils/formatting';
+import { t } from '../../utils/i18n';
 
 const plans = [
-    { name: 'Free', price: '$0', period: '/month', features: ['5 AI Recipes/month', 'Basic Meal Plans', 'Community Support'], subscribers: '150,000+', popular: false, buttonText: 'Manage Plan' },
-    { name: 'Pro Plan', price: '$9.99', period: '/month', features: ['Unlimited AI Recipes', 'Custom Meal Plans', 'Shopping List Export', 'Priority Support'], subscribers: '78,452', popular: true, buttonText: 'Manage Plan' },
-    { name: 'Gym Plan', price: '$19.99', period: '/month', features: ['All Pro features', 'Workout Integration', 'Macro Tracking', 'Trainer Collaboration'], subscribers: '56,123', popular: false, buttonText: 'Manage Plan' },
-    { name: 'Nutritionist Plan', price: '$29.99', period: '/month', features: ['All Gym features', 'Client Management', 'Custom Branding', 'Advanced Analytics'], subscribers: '23,876', popular: false, buttonText: 'Manage Plan' },
+    { nameKey: 'plan_free', price: '0', periodKey: 'plan_monthly', featuresKeys: ['plan_feature_5_ai', 'plan_feature_basic_plans', 'plan_feature_community'], subscribers: '150,000+', popular: false, buttonTextKey: 'plan_manage' },
+    { nameKey: 'plan_pro', price: '9.99', periodKey: 'plan_monthly', featuresKeys: ['plan_feature_unlimited_ai', 'plan_feature_custom_plans', 'plan_feature_shopping_list', 'plan_feature_priority_support'], subscribers: '78,452', popular: true, buttonTextKey: 'plan_manage' },
+    { nameKey: 'plan_gym', price: '19.99', periodKey: 'plan_monthly', featuresKeys: ['plan_feature_all_pro', 'plan_feature_workout', 'plan_feature_macro', 'plan_feature_trainer'], subscribers: '56,123', popular: false, buttonTextKey: 'plan_manage' },
+    { nameKey: 'plan_nutritionist', price: '29.99', periodKey: 'plan_monthly', featuresKeys: ['plan_feature_all_gym', 'plan_feature_client', 'plan_feature_branding', 'plan_feature_advanced_analytics'], subscribers: '23,876', popular: false, buttonTextKey: 'plan_manage' },
 ];
 
-const SubscriptionPlans: React.FC = () => {
+interface SubscriptionPlansProps {
+    currency: string;
+    language: string;
+}
+
+const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ currency, language }) => {
     return (
         <div>
-            <h1 className="text-3xl font-bold mb-6">Subscription Plans</h1>
+            <h1 className="text-3xl font-bold mb-6">{t(language, 'subscription_plans')}</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {plans.map((plan, index) => (
                     <Card key={index} className={`flex flex-col ${plan.popular ? 'border-2 border-primary' : ''}`}>
-                        {plan.popular && <span className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">Most Popular</span>}
+                        {plan.popular && <span className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">{t(language, 'plan_most_popular')}</span>}
                         <div className="text-center">
-                            <h3 className="text-xl font-semibold">{plan.name}</h3>
+                            <h3 className="text-xl font-semibold">{t(language, plan.nameKey)}</h3>
                             <p className="mt-2">
-                                <span className="text-4xl font-bold">{plan.price}</span>
-                                <span className="text-gray-500">{plan.period}</span>
+                                <span className="text-4xl font-bold">{formatCurrency(Number(plan.price), currency, language)}</span>
+                                <span className="text-gray-700 dark:text-gray-300">{t(language, plan.periodKey)}</span>
                             </p>
-                             <p className="mt-1 text-sm text-gray-500">{plan.subscribers} subscribers</p>
+                             <p className="mt-1 text-sm text-gray-700 dark:text-gray-300">{plan.subscribers} {t(language, 'plan_subscribers')}</p>
                         </div>
                         <ul className="mt-6 space-y-3 flex-grow">
-                            {plan.features.map((feature, fIndex) => (
+                            {plan.featuresKeys.map((featureKey, fIndex) => (
                                 <li key={fIndex} className="flex items-start">
                                     <CheckCircleIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                                    <span className="text-sm">{feature}</span>
+                                    <span className="text-sm">{t(language, featureKey)}</span>
                                 </li>
                             ))}
                         </ul>
                         <button className={`mt-6 w-full py-2 px-4 rounded-md font-semibold ${plan.popular ? 'bg-primary text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200'}`}>
-                            {plan.buttonText}
+                            {t(language, plan.buttonTextKey)}
                         </button>
                     </Card>
                 ))}
