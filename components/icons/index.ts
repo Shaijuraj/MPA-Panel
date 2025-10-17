@@ -1,0 +1,14 @@
+export { default as DashboardIcon } from './DashboardIcon';
+export { default as MealPlansIcon } from './MealPlansIcon';
+export { default as AnalyticsIcon } from './AnalyticsIcon';
+export { default as CouponsIcon } from './CouponsIcon';
+export { default as ThemesIcon } from './ThemesIcon';
+export { default as AdminRolesIcon } from './AdminRolesIcon';
+export { default as SettingsIcon } from './SettingsIcon';
+export { default as UsersIcon } from './UsersIcon';
+export { default as SubscriptionsIcon } from './SubscriptionsIcon';
+export { default as ChevronDownIcon } from './ChevronDownIcon';
+export { default as SearchIcon } from './SearchIcon';
+export { default as BellIcon } from './BellIcon';
+export { default as MenuIcon } from './MenuIcon';
+export { default as LogoutIcon } from './LogoutIcon';

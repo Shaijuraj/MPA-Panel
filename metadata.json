@@ -1,0 +1,5 @@
+{
+  "name": "Meal Planner Pro Dashboard",
+  "description": "A professional, clean dashboard for managing meal plans, users, analytics, and settings for the Meal Planner Pro application. It features a comprehensive navigation menu, data visualizations, and an AI-powered recipe assistant.",
+  "requestFramePermissions": []
+}
