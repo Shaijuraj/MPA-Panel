@@ -24,3 +24,4 @@ export { default as SystemIcon } from './SystemIcon';
 export { default as KeyIcon } from './KeyIcon';
 export { default as WebhookIcon } from './WebhookIcon';
 export { default as ShieldCheckIcon } from './ShieldCheckIcon';
+export { default as CheckCircleIcon } from './CheckCircleIcon';

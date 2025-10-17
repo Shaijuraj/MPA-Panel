@@ -5,12 +5,17 @@ import UserRetentionChart from '../content/UserRetentionChart';
 import RecipeLibrary from '../content/RecipeLibrary';
 import AiRecipeAssistant from '../content/AiRecipeAssistant';
 import UserList from '../content/UserList';
+import UserProfileView from '../content/UserProfileView';
+import UserAccountControl from '../content/UserAccountControl';
 import AdminRoleList from '../content/AdminRoleList';
 import GeneralSettings from '../content/GeneralSettings';
 import EmailNotifications from '../content/EmailNotifications';
 import ApiIntegrations from '../content/ApiIntegrations';
 import SecuritySettings from '../content/SecuritySettings';
 import SystemLogs from '../content/SystemLogs';
+import SubscriptionPlans from '../content/SubscriptionPlans';
+import UserSubscriptions from '../content/UserSubscriptions';
+import PaymentsAndCommissions from '../content/PaymentsAndCommissions';
 import PlaceholderContent from '../content/PlaceholderContent';
 import { type Theme } from '../../App';
 
@@ -38,6 +43,10 @@ const MainContent: React.FC<MainContentProps> = ({ activeItem, theme, setTheme }
       // Users
       case 'User List':
           return <UserList />;
+      case 'Profile View':
+          return <UserProfileView />;
+      case 'Account Control':
+          return <UserAccountControl />;
       // Admin Roles
       case 'Admin List':
           return <AdminRoleList />;
@@ -52,6 +61,13 @@ const MainContent: React.FC<MainContentProps> = ({ activeItem, theme, setTheme }
         return <SecuritySettings />;
       case 'System Logs':
         return <SystemLogs />;
+      // Subscriptions
+      case 'Subscription Plans':
+          return <SubscriptionPlans />;
+      case 'User Subscriptions':
+          return <UserSubscriptions />;
+      case 'Payments & Commissions':
+          return <PaymentsAndCommissions />;
       default:
         return <PlaceholderContent title={activeItem} />;
     }
