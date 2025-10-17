@@ -1,4 +1,3 @@
-
 import { type NavItem } from './types';
 import { DashboardIcon, MealPlansIcon, AnalyticsIcon, CouponsIcon, ThemesIcon, AdminRolesIcon, SettingsIcon, UsersIcon, SubscriptionsIcon } from './components/icons';
 
@@ -7,6 +6,7 @@ export const NAV_ITEMS: NavItem[] = [
     name: 'Dashboard',
     icon: DashboardIcon,
     subMenu: [
+      { name: 'Overview' },
       { name: 'App/Site Health Report' },
       { name: 'User Retention Chart' },
     ],

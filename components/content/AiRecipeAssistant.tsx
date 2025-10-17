@@ -1,56 +1,38 @@
-
 import React, { useState } from 'react';
 import Card from '../ui/Card';
-// import { GoogleGenAI } from "@google/genai";
+// Fix: Import GoogleGenAI
+import { GoogleGenAI } from "@google/genai";
 
 const AiRecipeAssistant: React.FC = () => {
   const [ingredients, setIngredients] = useState<string>('chicken breast, rice, broccoli, soy sauce');
   const [generatedRecipe, setGeneratedRecipe] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  // Fix: Add error state
+  const [error, setError] = useState<string>('');
 
   const handleGenerateRecipe = async () => {
+    // Fix: Clear previous error
+    setError('');
     setIsLoading(true);
     setGeneratedRecipe('');
 
-    // --- MOCK GEMINI API CALL ---
-    // In a real application, you would initialize the Gemini client and make the call here.
-    // const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-    // const response = await ai.models.generateContent({
-    //   model: 'gemini-2.5-flash',
-    //   contents: `Create a simple recipe using the following ingredients: ${ingredients}. Provide a name, ingredients list, and step-by-step instructions.`,
-    // });
-    // const recipeText = response.text;
-    
-    // For demonstration, we use a timeout to simulate an API call.
-    const mockRecipe = `
-**Garlic Soy Chicken & Broccoli**
-
-A quick and delicious weeknight meal that comes together in under 30 minutes.
-
-**Ingredients:**
-*   1 lb chicken breast, cut into bite-sized pieces
-*   1 cup uncooked rice
-*   2 cups broccoli florets
-*   3 tbsp soy sauce
-*   2 cloves garlic, minced
-*   1 tbsp honey
-*   1 tsp sesame oil
-*   Salt and pepper to taste
-*   Olive oil for cooking
-
-**Instructions:**
-1.  Cook rice according to package directions.
-2.  While rice is cooking, heat olive oil in a large skillet over medium-high heat. Season chicken with salt and pepper and add to the skillet. Cook until golden brown and cooked through.
-3.  Add broccoli florets to the skillet and cook for 3-4 minutes until tender-crisp.
-4.  In a small bowl, whisk together soy sauce, minced garlic, honey, and sesame oil.
-5.  Pour the sauce over the chicken and broccoli. Stir to combine and let the sauce thicken for 1-2 minutes.
-6.  Serve the chicken and broccoli over the cooked rice.
-    `;
-
-    setTimeout(() => {
-      setGeneratedRecipe(mockRecipe);
+    try {
+      // Fix: Implement Gemini API call
+      // The API key must be obtained exclusively from the environment variable `process.env.API_KEY`.
+      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY! });
+      const response = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: `Create a simple recipe using the following ingredients: ${ingredients}. Provide a name, a short description, an ingredients list, and step-by-step instructions. Format the response in Markdown.`,
+      });
+      const recipeText = response.text;
+      setGeneratedRecipe(recipeText);
+    } catch (e) {
+      console.error(e);
+      // Fix: Handle API errors gracefully
+      setError('Failed to generate recipe. Please check your API key and try again.');
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -72,11 +54,13 @@ A quick and delicious weeknight meal that comes together in under 30 minutes.
         </div>
         <button
           onClick={handleGenerateRecipe}
-          disabled={isLoading}
+          disabled={isLoading || !ingredients.trim()}
           className="mt-4 w-full inline-flex justify-center py-3 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:bg-gray-400 disabled:cursor-not-allowed"
         >
           {isLoading ? 'Generating...' : 'Generate Recipe'}
         </button>
+        {/* Fix: Display error message */}
+        {error && <p className="mt-4 text-sm text-center text-red-500">{error}</p>}
       </Card>
       <Card title="Generated Recipe">
         {isLoading && (
