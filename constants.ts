@@ -89,7 +89,7 @@ export const NAV_ITEMS: NavItem[] = [
     subMenu: [
       { name: 'Subscription Plans', translationKey: 'subscription_plans' },
       { name: 'User Subscriptions', translationKey: 'user_subscriptions' },
-      { name: 'payments_commissions', translationKey: 'payments_commissions' },
+      { name: 'Payments & Commissions', translationKey: 'payments_commissions' },
     ],
   },
 ];
